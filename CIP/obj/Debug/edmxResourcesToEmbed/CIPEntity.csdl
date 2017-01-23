@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CIPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AUDIT_LOG">
+    <Key>
+      <PropertyRef Name="AUDIT_LOG_ID" />
+    </Key>
+    <Property Name="AUDIT_LOG_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ACTION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CREATE_DTM" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="AUDIT_LOG_DETAIL" Relationship="Self.FK_AUDIT_LOG_DETAIL_AUDIT_LOG_AUDIT_LOG_ID" FromRole="AUDIT_LOG" ToRole="AUDIT_LOG_DETAIL" />
+  </EntityType>
+  <EntityType Name="AUDIT_LOG_DETAIL">
+    <Key>
+      <PropertyRef Name="AUDIT_DETAIL_ID" />
+    </Key>
+    <Property Name="AUDIT_DETAIL_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AUDIT_LOG_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="TYPE" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="VALUE" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+    <Property Name="CREATE_DTM" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="AUDIT_LOG" Relationship="Self.FK_AUDIT_LOG_DETAIL_AUDIT_LOG_AUDIT_LOG_ID" FromRole="AUDIT_LOG_DETAIL" ToRole="AUDIT_LOG" />
+  </EntityType>
+  <EntityType Name="TAB_AUDIT_LOG">
+    <Key>
+      <PropertyRef Name="TAB_AUDIT_LOG_ID" />
+    </Key>
+    <Property Name="TAB_AUDIT_LOG_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAB_NM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CREATE_DTM" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_AUDIT_LOG_DETAIL_AUDIT_LOG_AUDIT_LOG_ID">
+    <End Role="AUDIT_LOG" Type="Self.AUDIT_LOG" Multiplicity="1" />
+    <End Role="AUDIT_LOG_DETAIL" Type="Self.AUDIT_LOG_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUDIT_LOG">
+        <PropertyRef Name="AUDIT_LOG_ID" />
+      </Principal>
+      <Dependent Role="AUDIT_LOG_DETAIL">
+        <PropertyRef Name="AUDIT_LOG_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CIPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AUDIT_LOG" EntityType="Self.AUDIT_LOG" />
+    <EntitySet Name="AUDIT_LOG_DETAIL" EntityType="Self.AUDIT_LOG_DETAIL" />
+    <EntitySet Name="TAB_AUDIT_LOG" EntityType="Self.TAB_AUDIT_LOG" />
+    <AssociationSet Name="FK_AUDIT_LOG_DETAIL_AUDIT_LOG_AUDIT_LOG_ID" Association="Self.FK_AUDIT_LOG_DETAIL_AUDIT_LOG_AUDIT_LOG_ID">
+      <End Role="AUDIT_LOG" EntitySet="AUDIT_LOG" />
+      <End Role="AUDIT_LOG_DETAIL" EntitySet="AUDIT_LOG_DETAIL" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
