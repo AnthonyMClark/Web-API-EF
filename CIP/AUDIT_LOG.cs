@@ -22,8 +22,12 @@ namespace CIP
     
         public decimal AUDIT_LOG_ID { get; set; }
         public string USERID { get; set; }
-        public string ACTION { get; set; }
         public System.DateTime CREATE_DTM { get; set; }
+        public string CASE_ID { get; set; }
+        public Nullable<int> SSN { get; set; }
+        public Nullable<int> PHONE { get; set; }
+        public string FIRST_NM { get; set; }
+        public string LAST_NM { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AUDIT_LOG_DETAIL> AUDIT_LOG_DETAIL { get; set; }

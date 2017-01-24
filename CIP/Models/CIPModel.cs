@@ -6,7 +6,6 @@ using System.Web;
 
 namespace CIP.Models {
   public class CIPModel {
-    [Key]
     public int id { get; set; }
     public string Username { get; set; }
     public string CaseNo { get; set; }

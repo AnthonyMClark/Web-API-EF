@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="CIPModelStoreContainer" CdmEntityContainer="CIPEntities">
-    <EntitySetMapping Name="AUDIT_LOG">
-      <EntityTypeMapping TypeName="CIPModel.AUDIT_LOG">
-        <MappingFragment StoreEntitySet="AUDIT_LOG">
-          <ScalarProperty Name="AUDIT_LOG_ID" ColumnName="AUDIT_LOG_ID" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
-          <ScalarProperty Name="ACTION" ColumnName="ACTION" />
-          <ScalarProperty Name="CREATE_DTM" ColumnName="CREATE_DTM" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="AUDIT_LOG_DETAIL">
       <EntityTypeMapping TypeName="CIPModel.AUDIT_LOG_DETAIL">
         <MappingFragment StoreEntitySet="AUDIT_LOG_DETAIL">
@@ -22,13 +12,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TAB_AUDIT_LOG">
-      <EntityTypeMapping TypeName="CIPModel.TAB_AUDIT_LOG">
-        <MappingFragment StoreEntitySet="TAB_AUDIT_LOG">
-          <ScalarProperty Name="TAB_AUDIT_LOG_ID" ColumnName="TAB_AUDIT_LOG_ID" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
-          <ScalarProperty Name="TAB_NM" ColumnName="TAB_NM" />
+    <EntitySetMapping Name="AUDIT_LOG">
+      <EntityTypeMapping TypeName="CIPModel.AUDIT_LOG">
+        <MappingFragment StoreEntitySet="AUDIT_LOG">
+          <ScalarProperty Name="LAST_NM" ColumnName="LAST_NM" />
+          <ScalarProperty Name="FIRST_NM" ColumnName="FIRST_NM" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="CASE_ID" ColumnName="CASE_ID" />
           <ScalarProperty Name="CREATE_DTM" ColumnName="CREATE_DTM" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="AUDIT_LOG_ID" ColumnName="AUDIT_LOG_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

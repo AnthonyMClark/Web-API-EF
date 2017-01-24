@@ -6,8 +6,12 @@
     </Key>
     <Property Name="AUDIT_LOG_ID" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="USERID" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="ACTION" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="CREATE_DTM" Type="datetime" Nullable="false" />
+    <Property Name="CASE_ID" Type="varchar" MaxLength="10" />
+    <Property Name="SSN" Type="int" />
+    <Property Name="PHONE" Type="int" />
+    <Property Name="FIRST_NM" Type="varchar" MaxLength="50" />
+    <Property Name="LAST_NM" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="AUDIT_LOG_DETAIL">
     <Key>
@@ -17,15 +21,6 @@
     <Property Name="AUDIT_LOG_ID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
     <Property Name="TYPE" Type="nchar" MaxLength="20" Nullable="false" />
     <Property Name="VALUE" Type="varchar" MaxLength="2048" />
-    <Property Name="CREATE_DTM" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TAB_AUDIT_LOG">
-    <Key>
-      <PropertyRef Name="TAB_AUDIT_LOG_ID" />
-    </Key>
-    <Property Name="TAB_AUDIT_LOG_ID" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="USERID" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="TAB_NM" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="CREATE_DTM" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK_AUDIT_LOG_DETAIL_AUDIT_LOG_AUDIT_LOG_ID">
@@ -43,7 +38,6 @@
   <EntityContainer Name="CIPModelStoreContainer">
     <EntitySet Name="AUDIT_LOG" EntityType="Self.AUDIT_LOG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AUDIT_LOG_DETAIL" EntityType="Self.AUDIT_LOG_DETAIL" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TAB_AUDIT_LOG" EntityType="Self.TAB_AUDIT_LOG" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AUDIT_LOG_DETAIL_AUDIT_LOG_AUDIT_LOG_ID" Association="Self.FK_AUDIT_LOG_DETAIL_AUDIT_LOG_AUDIT_LOG_ID">
       <End Role="AUDIT_LOG" EntitySet="AUDIT_LOG" />
       <End Role="AUDIT_LOG_DETAIL" EntitySet="AUDIT_LOG_DETAIL" />

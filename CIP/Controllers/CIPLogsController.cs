@@ -13,32 +13,25 @@ using CIP.Models;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 
-namespace CIP.Controllers
-{
-    public class CIPLogsController : ApiController
-    {
-        private CIPEntities db = new CIPEntities();
-
-       // GET: api/CIPLogs/5
-        public IEnumerable<CIPLog> GetCIPLog(decimal id)
-        {
-            CIPRepository Rep = new CIPRepository();
-            var modelList = new List<CIPLog>();
-            return Rep.Retrieve();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool CIPLogExists(decimal id)
-        {
-            return db.CIPLogs.Count(e => e.id == id) > 0;
-        }
+namespace CIP.Controllers {
+  public class CIPLogsController : ApiController {
+    private CIPEntities db = new CIPEntities();
+    private CIPRepository Rep = new CIPRepository();
+    // GET: api/CIPLogs/5
+    public IEnumerable<CIPLog> GetCIPLog(decimal id) {
+      var modelList = new List<CIPLog>();
+      return Rep.Retrieve();
     }
+
+    public void PostCIPLog(string id, int ssn, int phone, string first, string last, CIPModel model) {
+      Rep.Create(id, ssn, phone, first, last, model);
+    }
+
+    protected override void Dispose(bool disposing) {
+      if (disposing) {
+        db.Dispose();
+      }
+      base.Dispose(disposing);
+    }
+  }
 }

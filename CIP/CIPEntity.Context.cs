@@ -25,12 +25,7 @@ namespace CIP
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AUDIT_LOG> AUDIT_LOG { get; set; }
         public virtual DbSet<AUDIT_LOG_DETAIL> AUDIT_LOG_DETAIL { get; set; }
-        public virtual DbSet<TAB_AUDIT_LOG> TAB_AUDIT_LOG { get; set; }
-
-    public System.Data.Entity.DbSet<CIP.Models.CIPLog> CIPLogs { get; set; }
-
-    public System.Data.Entity.DbSet<CIP.Models.CIPModel> CIPModels { get; set; }
-  }
+        public virtual DbSet<AUDIT_LOG> AUDIT_LOG { get; set; }
+    }
 }

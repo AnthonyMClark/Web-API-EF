@@ -183,9 +183,6 @@
     <Compile Include="Models\CIPModel.cs" />
     <Compile Include="Models\CIPRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TAB_AUDIT_LOG.cs">
-      <DependentUpon>CIPEntity.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="CIPEntity.Context.tt">

@@ -10,7 +10,11 @@ namespace CIP.Models {
     public decimal id { get; set; }
     public string AuditLogDetail { get; set; }
     public string UserID { get; set; }
-    public string Action { get; set; }
+    public string Case_ID { get; set; }
+    public int? SSN { get; set; }
+    public int? PhoneNo { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
     public DateTime CreateDTM { get; set; }
   }
 }

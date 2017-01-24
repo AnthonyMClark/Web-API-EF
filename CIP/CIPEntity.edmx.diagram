@@ -5,10 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="50d7a72306d74c1fbc1e29ee0bad621c" Name="Diagram1">
-        <EntityTypeShape EntityType="CIPModel.AUDIT_LOG" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CIPModel.AUDIT_LOG_DETAIL" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CIPModel.TAB_AUDIT_LOG" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="CIPModel.FK_AUDIT_LOG_DETAIL_AUDIT_LOG_AUDIT_LOG_ID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CIPModel.AUDIT_LOG" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="CIPModel.FK_AUDIT_LOG_DETAIL_AUDIT_LOG_AUDIT_LOG_ID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

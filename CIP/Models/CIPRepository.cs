@@ -5,20 +5,31 @@ using System.Web;
 
 namespace CIP.Models {
   public class CIPRepository {
-    internal CIPLog Create() {
-      var cipLog = new CIPLog {
-        CreateDTM = DateTime.Now
+    internal void Create(string id, int ssn, int phone, string first, string last, CIPModel model) {
+      var db = new CIPEntities();
+      var cipAudit = new AUDIT_LOG {
+        CASE_ID = id,
+        CREATE_DTM = DateTime.Now,
+        SSN = ssn,
+        PHONE = phone,
+        FIRST_NM = first,
+        LAST_NM = last,
+        USERID = model.Username
       };
-      return cipLog;
+      db.AUDIT_LOG.Add(cipAudit);
+      db.SaveChanges();
     }
     internal List<CIPLog> Retrieve() {
       var db = new CIPEntities();
-      return db.AUDIT_LOG.Select( x=> new CIPLog() {
-        Action = x.ACTION,
+      return db.AUDIT_LOG.Select(x => new CIPLog() {
         id = x.AUDIT_LOG_ID,
-        CreateDTM = x.CREATE_DTM,
         UserID = x.USERID,
-        //AuditLogDetail = x.AUDIT_LOG_DETAIL
+        Case_ID = x.CASE_ID,
+        SSN = x.SSN,
+        PhoneNo = x.PHONE,
+        FirstName = x.FIRST_NM,
+        LastName = x.LAST_NM,
+        CreateDTM = x.CREATE_DTM
       }).ToList();
     }
     public CIPModel GetCaseInfo(CIPModel item) {

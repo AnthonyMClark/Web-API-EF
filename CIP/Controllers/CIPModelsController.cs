@@ -38,7 +38,8 @@ namespace CIP.Controllers {
       else {
         item.Response = "The case entered could not be found. Please try a different search parameter";
       }
-
+      var cipLog = new CIPLogsController();
+      cipLog.PostCIPLog(id, ssn, phone, first, last, item);
       return item;
     }
 
@@ -47,10 +48,6 @@ namespace CIP.Controllers {
         db.Dispose();
       }
       base.Dispose(disposing);
-    }
-
-    private bool CIPModelExists(int id) {
-      return db.CIPModels.Count(e => e.id == id) > 0;
     }
   }
 }
